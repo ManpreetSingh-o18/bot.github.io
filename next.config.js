@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: '/bot.github.io',
+  assetPrefix: '/bot.github.io',
   reactStrictMode: true,
   swcMinify: true,
   webpack(config) {
