@@ -10,9 +10,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-
-  res.setHeader('Access-Control-Allow-Origin', 'https://manpreetsingh-o18.github.io');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   const { question, history } = req.body;
 
 

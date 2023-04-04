@@ -76,7 +76,7 @@ export default function Home() {
     const ctrl = new AbortController();
 
     try {
-      fetchEventSource('/api/chat', {
+      fetchEventSource('/bot.github.io/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
