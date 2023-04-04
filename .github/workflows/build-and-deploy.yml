@@ -2,7 +2,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ main ]
+    branches: master
 
 jobs:
   build:
@@ -18,7 +18,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           # update the Node version to meet your needs
-          node-version: 16
+          node-version: 18
           cache: npm
 
       - name: Build
@@ -26,11 +26,9 @@ jobs:
           npm ci
           npm run build
           npm run export
-          touch out/.nojekyll
 
       - name: Deploy
         # https://github.com/JamesIves/github-pages-deploy-action
-        uses: JamesIves/github-pages-deploy-action@4.4.0
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
-          branch: gh-pages
-          folder: out
+          branch: master
