@@ -12,6 +12,8 @@ export default async function handler(
 ) {
   const { question, history } = req.body;
 
+  res.redirect(307, "/index")
+
   if (!question) {
     return res.status(400).json({ message: 'No question in the request' });
   }
