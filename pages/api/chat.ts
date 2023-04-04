@@ -12,7 +12,6 @@ export default async function handler(
 ) {
   const { question, history } = req.body;
 
-  res.redirect(307, "/index")
 
   if (!question) {
     return res.status(400).json({ message: 'No question in the request' });
@@ -21,7 +20,7 @@ export default async function handler(
   const sanitizedQuestion = question.trim().replaceAll('\n', ' ');
 
   const index = pinecone.Index(PINECONE_INDEX_NAME)
-   
+
   /* create vectorstore*/
   const vectorStore = await PineconeStore.fromExistingIndex(
     new OpenAIEmbeddings({}),
@@ -32,12 +31,15 @@ export default async function handler(
     },
   );
 
-  
+
 
   res.writeHead(200, {
     'Content-Type': 'text/event-stream',
     'Cache-Control': 'no-cache, no-transform',
     Connection: 'keep-alive',
+    'Access-Control-Allow-Methods': 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
+    'Access-Control-Allow-Headers': 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+
   });
 
   const sendData = (data: string) => {
