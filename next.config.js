@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
   basePath: '/bot.github.io',
+  reactStrictMode: true,
   swcMinify: true,
   webpack(config) {
     config.experiments = { ...config.experiments, topLevelAwait: true };
